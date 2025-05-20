@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="create_review.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>UFC</title>
+    <script src="../telegram.js"></script>
+    <script src="../size.js"></script>
+</head>
+<body>
+    <div class="back">
+        <div class="button_container">
+            <button class="next_button">Далее</button>
+        </div>
+        <div class="first_phase">
+            <div class="put_to_center">
+                 
+                <div class="container">
+                    <div class="otziv">Отзыв</div>
+                    <textarea id="review" class="review_input" placeholder="Text..." maxlength="300"></textarea>
+                    <div class="hint">Напиши отзыв сюда, и нажми далее...</div>
+                </div>
+                <div class="review_stars_caontainer">
+                    <div class="star_and_count">
+                        <div class="rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                            <div class="rating-value">0.0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hint second">*Обязательный пункт</div>
+            </div>
+        </div>
+        <div class="second_phase">
+            <div class="second_phase_container">
+                <div class="photo_text">Фото ( Скрины )</div>
+                <div class="photos_block">
+                    <input type="file" id="photo1" accept="image/*" hidden>
+                    <input type="file" id="photo2" accept="image/*" hidden>
+                    <input type="file" id="photo3" accept="image/*" hidden>
+                    
+                    <div class="grid">
+                        <div class="photo large" onclick="document.getElementById('photo1').click()">+</div>
+                        <div class="small_column">
+                            <div class="photo small first" onclick="document.getElementById('photo2').click()">+</div>
+                            <div class="photo small second" onclick="document.getElementById('photo3').click()">+</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo_hint">Прикрепите фото ( скрины ) чтобы пользователи могли лучше разобраться в ситуации</div>
+            </div>
+        </div>
+    </div>
+    <script src="create_review.js"></script>
+</body>

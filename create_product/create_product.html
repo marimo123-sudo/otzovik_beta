@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>UFC</title>
+    <script src="../telegram.js"></script>
+    <script src="../size.js"></script>
+    <link rel="stylesheet" href="create_product.css">
+</head>
+<body>
+    <div class="back">
+        <div class="first_phase">
+            <div class="for_center_container">
+                <div class="container">
+                    <div class="choose_text">Выбери тип продукта:</div>
+                    <select class="select_type">
+                        <option value="" disabled selected hidden>Text...</option>
+                        <option value="канал">Канал</option>
+                        <option value="группа">Группа</option>
+                    </select>
+                    <label class="input-label">@UserName</label>
+                    <input type="text" placeholder="@..." class="username_input">
+                    <p class="hint-text">Напиши юзернейм твоего продукта</p>
+                </div>
+            </div>
+        </div>
+        <div class="second_phase">
+            <div class="for_center_container second">
+                <h1 class="question"></h1>
+                <div class="ten_nim_hint"></div>
+            </div>
+        </div>
+        <div class="next_btn_container">
+            <button class="next_button">Добавить</button>
+        </div>
+    </div>
+    <script src="create_product.js">далее</script>
+</body>
