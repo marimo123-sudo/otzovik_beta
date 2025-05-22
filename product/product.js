@@ -44,24 +44,37 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const reviewDiv = document.createElement("div");
                 reviewDiv.className = "review";
 
+                // Создание блока с фотографиями
+                let photosHTML = "";
+                if (review.photos && Array.isArray(review.photos)) {
+                    const limitedPhotos = review.photos.slice(0, 3); // максимум 3 фото
+                    photosHTML = `
+                        <div class="photo_scontainer">
+                            ${limitedPhotos.map(photo => `<img src="${photo}" alt="photo" class="review_photo">`).join("")}
+                        </div>
+                    `;
+                }
+
                 reviewDiv.innerHTML = `
-                        <div class="us_and_date_container">
-                            <div class="us_and_date">
-                                <div class="us">${review.username || "Anonim"}</div>
-                                <div class="date">${review.days_ago}d</div>
-                                <div class="for_right_side">
-                                    <div class="star_and_count">
-                                        <img src="../img/black_star.png" alt="" class="black_star_review">
-                                        <div class="count">${review.stars || "5"}</div>
-                                    </div>
+                    <div class="us_and_date_container">
+                        <div class="us_and_date">
+                            <div class="us">${review.username || "Anonim"}</div>
+                            <div class="date">${review.days_ago}d</div>
+                            <div class="for_right_side">
+                                <div class="star_and_count">
+                                    <img src="../img/black_star.png" alt="" class="black_star_review">
+                                    <div class="count">${review.stars || "5"}</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="review_container">
-                            <div class="review_text">${review.text || "None"}</div>
-                        </div>
-                        <div class="underline"></div>
+                    </div>
+                    <div class="review_container">
+                        <div class="review_text">${review.text || "None"}</div>
+                    </div>
+                    ${photosHTML}
+                    <div class="underline"></div>
                 `;
+
                 reviewsContainer.appendChild(reviewDiv);
             });
         } else {

@@ -54,35 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-async function sendReview({ tg_id, product_id, text, stars }) {
-    if (stars < 1 || stars > 5) {
-        throw new Error("Оценка должна быть от 1 до 5");
-    }
-
-    const response = await fetch("https://otzoviktg.ru/add_review", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            tg_id,
-            product_id,
-            text,
-            stars
-        })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-        throw new Error(data.detail || "Ошибка при отправке отзыва");
-    }
-
-    return data; // возвращаем, чтобы потом использовать new_avg или другое
-}
-
-
 var phase = 0
 var is_pressed = false
 const next_btn = document.querySelector(".next_button")
@@ -100,13 +71,23 @@ stars.forEach((star, index) => {
     currentRating = index + 1;
     ratingValue.textContent = currentRating.toFixed(1);
     stars.forEach((s, i) => s.classList.toggle('active', i < currentRating));
-  });
+    }); 
 });
 next_btn.addEventListener("click", async () => {
     if (!next_btn.classList.contains("can_press")) {
         return
     }
     if (phase == 0) {
+        if (!is_pressed || currentRating < 1) {
+            alert("Поставьте оценку перед отправкой.");
+            return;
+        }
+        
+        const text = document.getElementById("review").value.trim();
+        if (!text) {
+            alert("Напишите отзыв перед отправкой.");
+            return;
+        }
         // Анимируем первую фазу вверх
         hidefirstPhase();
         // Ждём завершения анимации (600мс), затем показываем вторую
@@ -124,27 +105,44 @@ next_btn.addEventListener("click", async () => {
         const tg_id = user.id;
         const urlParams = new URLSearchParams(window.location.search);
         const product_id = parseInt(urlParams.get("product_id"));
-        
         const text = document.getElementById("review").value.trim();
         
-        if (!is_pressed || currentRating < 1) {
-            alert("Поставьте оценку перед отправкой.");
-            return;
-        }
-        
-        if (!text) {
-            alert("Напишите отзыв перед отправкой.");
-            return;
-        }
+        // Собираем formData
+        const formData = new FormData();
+        formData.append("tg_id", tg_id);
+        formData.append("product_id", product_id);
+        formData.append("text", text);
+        formData.append("stars", currentRating);
+
+        const photoInputs = ["photo1", "photo2", "photo3"];
+        photoInputs.forEach(id => {
+            const input = document.getElementById(id);
+            if (input && input.files && input.files.length > 0) {
+                for (let i = 0; i < input.files.length; i++) {
+                    const file = input.files[i];
+                    if (file) {
+                        formData.append("photos", file);
+                    }
+                }
+            }
+        });
+        for (let pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+            }
         
         try {
-            const data = await sendReview({
-                tg_id,
-                product_id,
-                text,
-                stars: parseFloat(currentRating)
+            const response = await fetch("https://otzoviktg.ru/add_review", {
+                method: "POST",
+                body: formData
             });
 
+            if (!response.ok) {
+                const data = await response.json();
+                console.log(data);
+                throw new Error(data.detail || "Ошибка при отправке отзыва");
+            }
+
+            const data = await response.json();
             console.log("Отзыв добавлен!", data);
             window.location.href = `../product/product.html?id=${product_id}`;
         } catch (err) {
