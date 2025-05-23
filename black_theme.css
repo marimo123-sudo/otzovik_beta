@@ -1,0 +1,42 @@
+body.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark .profile_container,
+body.dark .product_container,
+body.dark .bottom_panel,
+body.dark .back {
+  background-color: #000000;
+  border-color: #333;
+}
+
+body.dark .name {
+  color: #ffffff;
+}
+
+body.dark .underline,
+body.dark .product_underline,
+body.dark .upline {
+  background-color: #333;
+}
+
+body.dark .product_mark,
+body.dark .us{
+  color: #ffffff;
+}
+
+body.dark .product_star,
+body.dark .product_right,
+body.dark #search .bottom_btn_img {
+  filter: brightness(0) invert(1); /* Делает изображения светлее */
+}
+
+body.dark .bottom_panel {
+  border-top: 1px solid #333;
+}
+
+body.dark .ava,
+body.dark .avatar {
+  border: 2px solid #444;
+}

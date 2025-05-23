@@ -33,6 +33,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         if (data.product) {
             document.querySelector(".product_name").textContent = data.product.name || "Без названия";
             document.querySelector(".product_review").textContent = data.product.review || "—";
+            const container = document.getElementById("product_profile_container");
+            if (data.product.avatar) {
+                container.style.backgroundImage = `url('${data.product.avatar}')`;
+            }
+
         }
 
         // Отзывы

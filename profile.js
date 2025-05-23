@@ -51,3 +51,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Ошибка при получении продуктов:", err);
     }
 });
+
+const updateViewport = () => {
+    const vh = Math.min(
+        window.innerHeight, 
+        window.visualViewport?.height || window.innerHeight
+    );
+    
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+};
+
+updateViewport();
+window.addEventListener('resize', updateViewport);
+window.visualViewport?.addEventListener('resize', updateViewport);
