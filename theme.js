@@ -7,14 +7,19 @@ function setupTelegramThemeListener() {
 
   // Функция для применения темы по текущему состоянию
   function applyTheme() {
-    if (tg.colorScheme === "dark") {
-        Telegram.WebApp.setHeaderColor('#000000'); // любой hex-цвет
-        Telegram.WebApp.setBackgroundColor('#000000'); // любой hex-цвет
-        document.body.classList.add("dark");
-    } else {
-        Telegram.WebApp.setHeaderColor('#ffffff'); // любой hex-цвет
-        Telegram.WebApp.setBackgroundColor('#ffffff'); // любой hex-цвет
-        document.body.classList.remove("dark");
+    try {
+      if (tg.colorScheme === "dark") {
+          Telegram.WebApp.setHeaderColor('#000000'); // любой hex-цвет
+          Telegram.WebApp.setBackgroundColor('#000000'); // любой hex-цвет
+          document.body.classList.add("dark");
+      } else {
+          Telegram.WebApp.setHeaderColor('#ffffff'); // любой hex-цвет
+          Telegram.WebApp.setBackgroundColor('#ffffff'); // любой hex-цвет
+          document.body.classList.remove("dark");
+      }
+    }
+    catch {
+      close();
     }
   }
 

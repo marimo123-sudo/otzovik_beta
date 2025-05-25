@@ -51,6 +51,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById('name').textContent = user.first_name;
         console.log(user.id);
     }
+    else {
+        window.close();
+    }
 
     // Переход на страницу продукта при клике
     document.getElementById("product-list").addEventListener("click", e => {

@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     if (!productId) {
         console.error("Нет ID продукта в URL");
+        window.close();
         return;
     }
     const btn = document.getElementById("create")
