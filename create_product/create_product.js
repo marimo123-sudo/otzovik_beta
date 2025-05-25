@@ -35,6 +35,9 @@ nextBtn.addEventListener('click', async function () {
         
         var type = select.value
         var username = input.value.trim();
+        username = username.replace(/^https?:\/\/t\.me\/?/, "");
+
+
         const user = Telegram.WebApp.initDataUnsafe.user;
         var tg_id = user.id
         try {
@@ -83,3 +86,12 @@ nextBtn.addEventListener('click', async function () {
         }, 500);
 });
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const tg = window.Telegram.WebApp;
+    tg.BackButton.show();
+
+    tg.BackButton.onClick(() => {
+        window.location.href = '../index.html';
+    });
+});

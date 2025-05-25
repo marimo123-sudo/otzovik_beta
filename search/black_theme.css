@@ -1,0 +1,58 @@
+body.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark .back,
+body.dark .profile_container,
+body.dark .product_container,
+body.dark .bottom_panel {
+  background-color: #000000;
+  border-color: #333;
+}
+
+body.dark .name {
+  color: #ffffff;
+}
+
+body.dark .underline,
+body.dark .product_underline,
+body.dark .upline {
+  background-color: #333;
+}
+
+body.dark .product_mark,
+body.dark .us {
+  color: #ffffff;
+}
+
+body.dark .product_star,
+body.dark .product_right,
+body.dark .bottom_btn_img.invert_dark {
+  filter: brightness(0) invert(1);
+}
+
+body.dark .count {
+  color: #999;
+}
+
+body.dark .bottom_panel {
+  border-top: 1px solid #333;
+}
+
+body.dark .ava,
+body.dark .avatar {
+  border: 2px solid #444;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+}
+
+/* ======== УТИЛИТЫ ======== */
+
+.invert_dark {
+  filter: none;
+}
+
+body.dark .invert_dark,
+body.dark #search {
+  filter: brightness(0) invert(1);
+}

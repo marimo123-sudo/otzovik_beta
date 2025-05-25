@@ -60,25 +60,31 @@ document.addEventListener("DOMContentLoaded", async function () {
                     `;
                 }
 
+                reviewDiv.classList.add("review", "fade-in"); // Добавим нужные классы
+
                 reviewDiv.innerHTML = `
-                    <div class="us_and_date_container">
-                        <div class="us_and_date">
-                            <div class="us">${review.username || "Anonim"}</div>
-                            <div class="date">${review.days_ago}d</div>
-                            <div class="for_right_side">
-                                <div class="star_and_count">
-                                    <img src="../img/black_star.png" alt="" class="black_star_review">
-                                    <div class="count">${review.stars || "5"}</div>
+                    <div class="text_and_star">
+                        <div class="texts">
+                            <div class="us_and_date_container">
+                                <div class="us_and_date">
+                                    <div class="us">${review.username || "Anonim"}</div>
+                                    <div class="date">${review.days_ago}d</div>
+                                    <div class="for_right_side"></div>
                                 </div>
                             </div>
+                            <div class="review_container">
+                                <div class="review_text">${review.text || "None"}</div>
+                            </div>
+                            ${photosHTML}
+                        </div>
+                        <div class="star_and_count">
+                            <img src="../img/black_star.png" alt="" class="black_star_review">
+                            <div class="count">${review.stars || "5"}</div>
                         </div>
                     </div>
-                    <div class="review_container">
-                        <div class="review_text">${review.text || "None"}</div>
-                    </div>
-                    ${photosHTML}
                     <div class="underline"></div>
                 `;
+
 
                 reviewsContainer.appendChild(reviewDiv);
             });
@@ -88,6 +94,24 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     } catch (err) {
         console.error("Ошибка при загрузке отзывов:", err);
+    }
+});
+
+
+document.addEventListener("click", function (e) {
+    const isPhoto = e.target.classList.contains("review_photo");
+    const container = document.getElementById("fullscreen_photo_container");
+    const fullscreenImg = document.getElementById("fullscreen_photo");
+
+    if (isPhoto) {
+        fullscreenImg.src = e.target.dataset.full || e.target.src;
+        container.classList.add("fullscreen_visible");
+    } else if (container.classList.contains("fullscreen_visible")) {
+        container.classList.remove("fullscreen_visible");
+        // очистка src через 300мс, после анимации
+        setTimeout(() => {
+            fullscreenImg.src = "";
+        }, 300);
     }
 });
 

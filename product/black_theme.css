@@ -1,0 +1,93 @@
+body.dark {
+  background-color: #000000;
+  color: #f0f0f0;
+  font-family: 'Inter', sans-serif;
+}
+
+body.dark .product_profile_container {
+  background-color: #121212;
+  color: #f5f5f5;
+  box-shadow: none;
+}
+
+body.dark .white_back {
+  background-color: #1a1a1a;
+  box-shadow: none;
+}
+
+body.dark .product_review {
+  color: #ffffff; /* золотой */
+  text-shadow: none;
+}
+
+body.dark .product_name {
+  color: #fff;
+  text-shadow: none;
+}
+
+
+body.dark .reviews_container {
+  background-color: #000000;
+}
+
+body.dark .review {
+  background-color: #000000;
+  color: #ddd;
+  box-shadow: none;
+}
+
+
+body.dark .review_text,
+body.dark .us,
+body.dark .date {
+  color: #ccc;
+}
+
+body.dark .photo_scontainer img.review_photo {
+  border: 2px solid transparent;
+}
+
+body.dark .photo_scontainer img.review_photo:hover {
+  border-color: #ffffff;
+  box-shadow: 0 0 8px #ffffff;
+}
+
+body.dark .star_and_count,
+body.dark .count {
+    color: #ffffff;
+}
+
+body.dark .black_star_review,
+body.dark .create_review_btn_img {
+    filter: brightness(0) invert(1);
+}
+
+body.dark .create_review_container {
+    background-color: #000;
+}
+
+body.dark .create_review_btn {
+    background-color: #000000;
+    box-shadow: none;
+}
+
+
+/* Fullscreen photo container */
+body.dark #fullscreen_photo_container {
+    background-color: rgba(0, 0, 0, 0.97);
+}
+
+
+/* Scrollbar for dark mode */
+body.dark ::-webkit-scrollbar {
+    width: 10px;
+}
+
+body.dark ::-webkit-scrollbar-track {
+    background: #000;
+}
+
+
+body.dark .profile_star {
+    filter: brightness(0) invert(1); 
+}

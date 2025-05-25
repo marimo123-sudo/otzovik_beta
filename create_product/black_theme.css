@@ -1,0 +1,41 @@
+body.dark {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+body.dark .back {
+    background-color: #121212;
+}
+
+body.dark .choose_text,
+body.dark .input-label,
+body.dark .question,
+body.dark .ten_nim_hint {
+    color: #f0f0f0;
+}
+
+body.dark .select_type,
+body.dark .username_input {
+    background-color: #2a2a2a;
+    border: 0.5px solid #444;
+    color: #f0f0f0;
+}
+
+body.dark .username_input::placeholder {
+    color: #aaa;
+}
+
+body.dark .hint-text {
+    color: #888;
+}
+
+body.dark .next_button {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+}
+
+body.dark .next_button.enabled {
+    background-color: #f0f0f0;
+    color: #121212;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}

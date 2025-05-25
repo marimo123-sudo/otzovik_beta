@@ -119,7 +119,7 @@ head, body {
 }
 
 .us {
-    justify-content: center;
+    justify-content: start;
     display: flex;
     padding-bottom: 5px;
 }

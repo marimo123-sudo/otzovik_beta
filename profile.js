@@ -1,3 +1,46 @@
+async function parseHashParams() {
+    const tg = window.Telegram.WebApp;
+    const user = tg.initDataUnsafe.user;
+    
+    const formData = new FormData();
+    formData.append('tg_id', user.id);
+    formData.append('name', user.first_name);
+    await fetch('https://otzoviktg.ru/create_user', {
+        method: 'POST',
+        body: formData,
+    })
+    const hash = decodeURIComponent(window.location.hash.substring(1)); // убираем #
+    var params = {};
+    // делим по &
+    const parts = hash.split('&');
+    for (const part of parts) {
+        const [key, value] = part.split('=');
+        if (key && value) {
+            params[key] = value;
+        }
+    }
+
+    return params;
+}
+
+async function redirectIfProduct() {
+    const hashParams = await parseHashParams();
+
+    const startParam = hashParams["start_param"] || hashParams["tgWebAppStartParam"];
+    if (startParam && startParam.startsWith("product_")) {
+        const productId = startParam.split("_")[1];
+        if (productId) {
+            window.location.href = `/product/product.html?id=${productId}`;
+        }
+    }
+}
+
+window.addEventListener("load", redirectIfProduct);
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", async () => {
     const tg = window.Telegram.WebApp;
     const user = tg.initDataUnsafe.user;
@@ -23,8 +66,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (res.status === 404) return console.log("Не удалось найти список продуктов");
             throw new Error("Ошибка сервера при получении продуктов");
         }
-
-        const products = await res.json();
+        var list_of_data = await res.json();
+        const products = list_of_data[1];
+        var avatar = list_of_data[0]
+        var avatar_html = document.getElementsByClassName("avatars")
+        for (let i = 0; i < avatar_html.length; i++) {
+            avatar_html[i].src = avatar;
+        }
         console.log("Список продуктов:", products);
 
         const container = document.getElementById("product-list");
@@ -37,7 +85,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         <img src="img/black_star.png" class="product_star">
                         <div class="product_mark">${p.review || "—"}</div>
                         <div class="us_and_count">
-                            <div class="us">${p.username || p.name || "@unknown"}</div>
+                            <div class="us">@${p.username || p.name || "@unknown"}</div>
                             <div class="count">${p.members || 0} участников</div>
                         </div>
                         <img src="img/right_black.png" class="product_right">
@@ -52,15 +100,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-const updateViewport = () => {
-    const vh = Math.min(
-        window.innerHeight, 
-        window.visualViewport?.height || window.innerHeight
-    );
-    
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-};
 
-updateViewport();
-window.addEventListener('resize', updateViewport);
-window.visualViewport?.addEventListener('resize', updateViewport);
+
+
+Telegram.WebApp.ready();

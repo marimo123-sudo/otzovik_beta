@@ -8,10 +8,43 @@ head, body {
 
 
 .back {
+    opacity: 0;
     height: var(--vh);
     width: 100vw;
     background-color: #ffffff;
     position: relative;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.back.show {
+    opacity: 1;
+}
+
+.white_back {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 10px;
+    max-width: 70vw;
+}
+
+.profile_infos {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: calc(var(--vh) * 0.13);
+    justify-content: center;
+}
+
+.product_name {
+    font-weight: 600;
+    padding-left: 1vw;
+    white-space: nowrap;          /* Текст в одну строку */
+    overflow: hidden;             /* Скрыть лишний текст */
+    text-overflow: ellipsis;      /* Добавить троеточие */
+    max-width: 80%;               /* Задай подходящую ширину, чтобы ограничить текст */
+         /* Задай подходящую ширину, чтобы ограничить текст */
 }
 
 .product_profile_container {
@@ -25,21 +58,11 @@ head, body {
     background-repeat: no-repeat;
 }
 
-.profile_infos {
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: calc(var(--vh) * 0.13);
-}
 
 .profile_star {
     height: calc(var(--vh) * 0.04);
 }
 
-.product_name {
-    font-weight: 600;
-    padding-left: 1vw;
-}
 
 .product_review {
     font-weight: 600;
@@ -87,6 +110,10 @@ head, body {
     align-items: center;
 }
 
+.texts {
+    width: 100%;
+}
+
 .us {
     font-size: calc(var(--vh) * 0.022);
 }
@@ -121,14 +148,11 @@ head, body {
 }
 
 .star_and_count {
-    position: relative;
     display: flex;
-    justify-content: start;
-    width: 10%;
     flex-direction: column;
-    right: 0;
     align-items: center;
 }
+
 
 .black_star_review {
     position: relative;
@@ -150,6 +174,14 @@ head, body {
     bottom: calc(var(--vh) * -0.02);
 }
 
+.text_and_star {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* добавляем это */
+    align-items: flex-start; /* выравнивание по верхнему краю */
+}
+
+
 .create_review_container {
     position: relative;
     bottom: 0;
@@ -165,6 +197,7 @@ head, body {
     border-color: transparent;
     width: 30vw;
     height: 100%;
+    z-index: 10;
 }
 
 .create_review_btn_img {
@@ -189,6 +222,7 @@ head, body {
     width: 100vw;
     height: 1px;
     background-color: #5f5f5f;
+    z-index: 100;
 }
 
 .upline_container {
@@ -197,5 +231,32 @@ head, body {
     height: 100%;
     display: flex;
     justify-content: center;
-    z-index: 10;
 } 
+
+
+  #fullscreen_photo_container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 9999;
+  }
+
+  #fullscreen_photo_container.fullscreen_visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#fullscreen_photo {
+    max-width: 90vw;
+    max-height: 90vh;
+    box-shadow: 0 0 20px white;
+    /* border-radius: 5%; */
+  }
+

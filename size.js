@@ -8,10 +8,16 @@ const updateViewport = () => {
 };
 
 updateViewport();
-// window.addEventListener('resize', updateViewport);
-// window.visualViewport?.addEventListener('resize', updateViewport);
+window.addEventListener('resize', updateViewport);
+window.visualViewport?.addEventListener('resize', updateViewport);
 
-Telegram.WebApp.setHeaderColor('#ffffff'); // любой hex-цвет
+try {
+    Telegram.WebApp.ready();
+    Telegram.WebApp.expand();
+}
+catch {
 
-Telegram.WebApp.ready();
-Telegram.WebApp.expand();
+}
+
+
+

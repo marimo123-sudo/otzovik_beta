@@ -1,0 +1,25 @@
+head, body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+.back {
+    height: var(--vh);
+    width: 100vw;
+    background-color: #ffffff;
+    position: relative;
+}
+
+.container {
+    height: var(--vh);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coming_soon {
+    font-weight: 700;
+}

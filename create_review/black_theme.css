@@ -1,0 +1,93 @@
+body.dark {
+  background-color: #000000;
+  color: #f0f0f0;
+  font-family: 'Inter', sans-serif;
+}
+
+body.dark .back {
+  background-color: #000000;
+}
+
+
+body.dark .otziv {
+  color: #ffffff;
+}
+
+body.dark .review_input {
+  background-color: #121212;
+  color: #e0e0e0;
+  border: 1px solid #333;
+}
+
+body.dark .hint,
+body.dark .hint.second {
+  color: #999999;
+}
+
+body.dark .review_stars_caontainer {
+  background-color: transparent;
+}
+
+body.dark .rating span {
+  color: #3c3c3c; /* неактивные звёзды */
+}
+
+body.dark .rating span.active {
+  color: #ffffff; /* активные звёзды */
+}
+
+body.dark .rating-value {
+  color: #ffffff;
+}
+
+body.dark .next_button {
+  background-color: #111111;
+  color: #ffffff;
+}
+
+body.dark .next_button.can_press {
+    color: #000;
+    background-color: rgb(255, 255, 255);
+}
+
+
+body.dark .second_phase {
+  background-color: #000000;
+}
+
+body.dark .photo_text {
+  color: #ffffff;
+}
+
+body.dark .photo_hint {
+  color: #aaaaaa;
+}
+
+body.dark .photo {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 1px dashed #555;
+}
+
+body.dark .photo:hover {
+  background-color: #2a2a2a;
+  border-color: #888;
+}
+
+body.dark input[type="file"] {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Scrollbar (если нужен) */
+body.dark ::-webkit-scrollbar {
+  width: 10px;
+}
+
+body.dark ::-webkit-scrollbar-track {
+  background: #000;
+}
+
+body.dark ::-webkit-scrollbar-thumb {
+  background: #444;
+}
