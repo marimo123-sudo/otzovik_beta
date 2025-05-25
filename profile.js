@@ -73,8 +73,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         const products = list_of_data[1];
         var avatar = list_of_data[0]
         var avatar_html = document.getElementsByClassName("avatars")
-        for (let i = 0; i < avatar_html.length; i++) {
-            avatar_html[i].src = avatar;
+        if (!avatar) {
+            for (let i = 0; i < avatar_html.length; i++) {
+                avatar_html[i].src = "img/Profile-PNG-Image.png";
+            }    
+        }
+        else {
+            for (let i = 0; i < avatar_html.length; i++) {
+                avatar_html[i].src = avatar;
+            }
         }
         console.log("Список продуктов:", products);
 
