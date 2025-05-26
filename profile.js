@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.log(user.id);
     }
     else {
-        // window.close();
+        window.close();
     }
 
     // Переход на страницу продукта при клике
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <div class="product" data-id="${p.id}">
                     <div class="product_infos">
                         <img src="img/black_star.png" class="product_star">
-                        <div class="product_mark">${p.review || "—"}</div>
+                        <div class="product_mark">${p.review || "N/A"}</div>
                         <div class="us_and_count">
                             <div class="us">@${p.username || p.name || "@unknown"}</div>
                             <div class="count">${p.members || 0} участников</div>

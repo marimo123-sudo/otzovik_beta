@@ -16,6 +16,19 @@ function validateForm() {
     }
 }
 
+
+const updateViewport = () => {
+    const vh = Math.min(
+        window.innerHeight, 
+        window.visualViewport?.height || window.innerHeight
+    );
+    
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+};
+
+updateViewport();
+
+
 select.addEventListener('change', validateForm);
 input.addEventListener('input', validateForm);
 
