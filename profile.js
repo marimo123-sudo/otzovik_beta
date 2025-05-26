@@ -30,7 +30,7 @@ async function redirectIfProduct() {
     if (startParam && startParam.startsWith("product_")) {
         const productId = startParam.split("_")[1];
         if (productId) {
-            window.location.href = `/product/product.html?id=${productId}`;
+            window.location.href = `product/product.html?id=${productId}`;
         }
     }
 }

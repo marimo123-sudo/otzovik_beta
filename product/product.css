@@ -258,5 +258,27 @@ head, body {
     max-height: 90vh;
     box-shadow: 0 0 20px white;
     /* border-radius: 5%; */
-  }
+}
 
+.copy_link_btn {
+    height: 100%;
+    width: 40%;
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    z-index: 4;
+    background-color: transparent;
+}
+
+.copy_link_img {
+    height: 50%;
+    padding-right: 10%;
+}
+
+.copy_text {
+    font-weight: 700;
+    font-size: calc(var(--vh) * 0.02);
+}

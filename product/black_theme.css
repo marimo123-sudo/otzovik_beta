@@ -53,12 +53,14 @@ body.dark .photo_scontainer img.review_photo:hover {
 }
 
 body.dark .star_and_count,
-body.dark .count {
+body.dark .count,
+body.dark .copy_text {
     color: #ffffff;
 }
 
 body.dark .black_star_review,
-body.dark .create_review_btn_img {
+body.dark .create_review_btn_img,
+body.dark .copy_link_img {
     filter: brightness(0) invert(1);
 }
 

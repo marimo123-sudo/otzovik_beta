@@ -8,6 +8,25 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+function copyLink() {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id");
+    const copy_link_text = `https://t.me/bot_otziv_bot?startapp=product_${productId}`;
+
+    navigator.clipboard.writeText(copy_link_text).then(() => {
+        const copyTextEl = document.getElementById("text");
+        copyTextEl.textContent = "Copied!";
+
+        setTimeout(() => {
+            copyTextEl.textContent = "Copy Link";
+        }, 1500);
+    }).catch(err => {
+        alert("Ошибка копирования: " + err);
+    });
+}
+
+
+
 document.addEventListener("DOMContentLoaded", async function () {
     const params = new URLSearchParams(window.location.search);
     const productId = params.get("id");
@@ -19,7 +38,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
     const btn = document.getElementById("create")
-
     btn.addEventListener("click", () => {
         window.location.href = `../create_review/create_review.html?product_id=${productId}`
     });
