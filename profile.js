@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.log(user.id);
     }
     else {
-        window.close();
+        // window.close();
     }
 
     // Переход на страницу продукта при клике
@@ -72,13 +72,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         var list_of_data = await res.json();
         const products = list_of_data[1];
         var avatar = list_of_data[0]
-        var avatar_html = document.getElementsByClassName("avatars")
-        if (!avatar) {
-            for (let i = 0; i < avatar_html.length; i++) {
-                avatar_html[i].src = "img/Profile-PNG-Image.png";
-            }    
-        }
-        else {
+        if (avatar) {
+            var avatar_html = document.getElementsByClassName("avatars")
             for (let i = 0; i < avatar_html.length; i++) {
                 avatar_html[i].src = avatar;
             }
