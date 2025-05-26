@@ -47,7 +47,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const data = await response.json();
         console.log("Отзывы:", data);
-
+        var link_to_channel = document.getElementById("7")
+        link_to_channel.href = `https://t.me/${data.product.username}`
         // Заполняем шапку (название, средний рейтинг)
         if (data.product) {
             document.querySelector(".product_name").textContent = data.product.name || "Без названия";
