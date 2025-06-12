@@ -29,8 +29,8 @@ const updateViewport = () => {
 updateViewport();
 
 
-// select.addEventListener('change', validateForm);
-// input.addEventListener('input', validateForm);
+select.addEventListener('change', validateForm);
+input.addEventListener('input', validateForm);
 
 // Проверка при загрузке
 validateForm();
